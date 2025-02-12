@@ -16,8 +16,11 @@ public record NewTaskModel(
         @NotNull(message = "Task platform is required")
         String platform,
 
-        @NotNull(message = "Task message is required")
         String caption_message,
+
+        String engagement_type,
+
+        String social_media_link,
 
         double price,
 

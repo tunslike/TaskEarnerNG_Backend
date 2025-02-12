@@ -10,6 +10,7 @@ public record TaskResponse(
         String taskId,
         String taskName,
         String taskDescription,
+        String image_src,
         String priceType,
         Long taskPrice,
         String platform,

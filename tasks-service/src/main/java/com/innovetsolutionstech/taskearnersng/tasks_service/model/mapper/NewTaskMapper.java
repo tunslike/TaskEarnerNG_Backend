@@ -17,6 +17,8 @@ public class NewTaskMapper {
                 .taskTypeID(record.taskTypeID())
                 .taskType(record.taskType())
                 .caption_message(record.caption_message())
+                .engagement_type(record.engagement_type())
+                .social_media_link(record.social_media_link())
                 .price(record.price())
                 .no_Of_Post(record.no_of_post())
                 .platform(record.platform())

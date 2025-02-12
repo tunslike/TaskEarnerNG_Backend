@@ -15,6 +15,7 @@ public class TaskTypeMapper {
                 .taskId(UUID.randomUUID().toString())
                 .taskName(record.taskName())
                 .taskDescription(record.taskDescription())
+                .image_src(record.imageSource())
                 .taskPrice(record.taskPrice())
                 .appName(record.appName())
                 .priceType(record.priceType())
@@ -28,11 +29,12 @@ public class TaskTypeMapper {
                 taskType.getTaskId(),
                 taskType.getTaskName(),
                 taskType.getTaskDescription(),
+                taskType.getImage_src(),
                 taskType.getPriceType(),
                 taskType.getTaskPrice(),
                 taskType.getPlatform(),
-                taskType.getDateCreated().toString(),
-                taskType.getAppName()
+                taskType.getAppName(),
+                taskType.getDateCreated().toString()
         );
     }
 }

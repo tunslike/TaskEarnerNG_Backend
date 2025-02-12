@@ -39,8 +39,14 @@ public class NewTask {
     @Column(name = "PLATFORM")
     private String platform;
 
-    @Column(name = "CAPTION_MESSAGE")
+    @Column(name = "CAPTION_MESSAGE", nullable = true)
     private String caption_message;
+
+    @Column(name = "ENGAGEMENT_TYPE", nullable = true)
+    private String engagement_type;
+
+    @Column(name = "SOCIAL_MEDIA_LINK", nullable = true)
+    private String social_media_link;
 
     @Column(name = "PRICE")
     private double price;

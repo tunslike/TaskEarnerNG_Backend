@@ -13,6 +13,9 @@ public record NewTaskType(
         @NotNull(message = "Task Description is required")
         String taskDescription,
 
+        @NotNull(message = "Task Description is required")
+        String imageSource,
+
         @NotNull(message = "Task Price is required")
         Long taskPrice,
 

@@ -1,7 +1,9 @@
 package com.innovetsolutionstech.taskearnersng.tasks_service.controller;
 
+import com.innovetsolutionstech.taskearnersng.tasks_service.model.NewTaskActivity;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.NewTaskModel;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.NewTaskType;
+import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.NewTaskResponse;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.TaskResponse;
 import com.innovetsolutionstech.taskearnersng.tasks_service.service.TasksService;
 import jakarta.validation.Valid;
@@ -23,14 +25,22 @@ public class TasksController {
         return ResponseEntity.ok(service.createNewTaskType(request));
     }
 
+    @PostMapping("/submitTask")
+    public ResponseEntity<String> submitCompletedTask (@RequestBody @Valid NewTaskActivity request) {
+        return ResponseEntity.ok(service.submitCompletedTask(request));
+    }
+
     @GetMapping("fetchTaskTypes")
     public ResponseEntity<List<TaskResponse>> loadTasksTypes () {
         return ResponseEntity.ok(service.findAllTaskTypes());
     }
 
     @PostMapping("/newTask")
-    public ResponseEntity<String> createNewTask (@RequestBody @Valid NewTaskModel request) {
-        return ResponseEntity.ok(service.newTask(request));
+    public ResponseEntity<NewTaskResponse> createNewTask (@RequestBody @Valid NewTaskModel request) {
+        NewTaskResponse response = new NewTaskResponse(
+                service.newTask(request),200,"New task created successfully"
+        );
+        return ResponseEntity.ok(response);
     }
 
 

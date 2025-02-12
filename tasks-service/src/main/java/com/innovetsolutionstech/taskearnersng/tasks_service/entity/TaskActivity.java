@@ -12,13 +12,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "TENG_TASKS_TYPE")
+@Table(name = "TENG_TASK_ACTIVITY")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @EntityListeners(AuditingEntityListener.class)
-public class TaskType {
+public class TaskActivity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,32 +28,17 @@ public class TaskType {
     @Column(name = "TASK_ID")
     private String taskId;
 
-    @Column(name = "TASK_NAME")
-    private String taskName;
+    @Column(name = "COMPLETED_BY")
+    private String completedBy;
 
-    @Column(name = "TASK_DESCRIPTION")
-    private String taskDescription;
+    @Column(name = "SOCIAL_MEDIA_ACCOUNT")
+    private String socialMediaAccount;
 
-    @Column(name = "IMAGE_SRC")
-    private String image_src;
-
-    @Column(name = "PRICE_TYPE")
-    private String priceType;
-
-    @Column(name = "TASK_PRICE")
-    private Long taskPrice;
-
-    @Column(name = "PLATFORM")
-    private String platform;
-
-    @Column(name = "APP_NAME")
-    private String appName;
+    @Column(name = "PROOF_OF_WORK")
+    private String proofOfWork;
 
     @CreatedDate
     @Column(name = "DATE_CREATED", updatable = false, nullable = false)
     private LocalDateTime dateCreated;
-
-    @Column(name = "DATE_UPDATED", updatable = false, nullable = true)
-    private LocalDateTime dateUpdated;
 
 }
