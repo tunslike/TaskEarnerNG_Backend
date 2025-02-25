@@ -10,9 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TasksDataRepository extends JpaRepository<TaskType, Integer> {
 
-    @Modifying
-    @Transactional
-    @Query("UPDATE User u SET u.status = :status WHERE u.id = :id")
-    int updateUserStatus(Long id, String status);
 
 }

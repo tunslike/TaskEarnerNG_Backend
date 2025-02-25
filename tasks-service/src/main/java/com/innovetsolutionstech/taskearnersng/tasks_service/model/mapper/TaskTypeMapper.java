@@ -2,7 +2,7 @@ package com.innovetsolutionstech.taskearnersng.tasks_service.model.mapper;
 
 import com.innovetsolutionstech.taskearnersng.tasks_service.entity.TaskType;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.NewTaskType;
-import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.TaskResponse;
+import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.TaskTypeResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -10,9 +10,12 @@ import java.util.UUID;
 
 @Service
 public class TaskTypeMapper {
+
+    // map to task type
     public TaskType toTaskType(NewTaskType record) {
         return TaskType.builder()
                 .taskId(UUID.randomUUID().toString())
+                .taskCategory(record.taskCategory())
                 .taskName(record.taskName())
                 .taskDescription(record.taskDescription())
                 .image_src(record.imageSource())
@@ -24,9 +27,11 @@ public class TaskTypeMapper {
                 .build();
     }
 
-    public TaskResponse fromTaskType(TaskType taskType) {
-        return new TaskResponse(
+    // fetch from task type mapper
+    public TaskTypeResponse fromTaskType(TaskType taskType) {
+        return new TaskTypeResponse(
                 taskType.getTaskId(),
+                taskType.getTaskCategory(),
                 taskType.getTaskName(),
                 taskType.getTaskDescription(),
                 taskType.getImage_src(),

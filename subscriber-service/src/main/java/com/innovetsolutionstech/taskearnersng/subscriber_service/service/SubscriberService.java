@@ -3,6 +3,7 @@ package com.innovetsolutionstech.taskearnersng.subscriber_service.service;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.data.SubscriberAccessDataRespository;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.data.SubscriberDataRepository;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.data.SubscriberProfileDataRepository;
+import com.innovetsolutionstech.taskearnersng.subscriber_service.entity.ManageAccess;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.entity.Subscriber;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.exceptions.SubscriberException;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.model.LoginSubscriber;
@@ -11,6 +12,7 @@ import com.innovetsolutionstech.taskearnersng.subscriber_service.model.NewSubscr
 import com.innovetsolutionstech.taskearnersng.subscriber_service.model.dto.LoginResponse;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.model.mapper.SubscriberMapper;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.repository.SubscriberRepository;
+import com.innovetsolutionstech.taskearnersng.subscriber_service.utilities.JwtUtil;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.utilities.Utilities;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,8 @@ public class SubscriberService implements SubscriberRepository<Subscriber> {
     private final SubscriberDataRepository subscriberRepo;
     private final SubscriberAccessDataRespository subscriberAccessRepo;
     private final SubscriberProfileDataRepository subscriberProfileRepo;
+    private final ManageAccessService manageAccessService;
+    private final JwtUtil jwtUtil;
 
     // data mappers
     private final SubscriberMapper subscriberMapper;
@@ -103,13 +107,19 @@ public class SubscriberService implements SubscriberRepository<Subscriber> {
 
                 if(Utilities.validateAccessCode(login.accessCode(), accessCode.getAccessCode())) {
 
+                    String token = jwtUtil.generateAccessToken(subscriber.getSubscriberId());
+                    ManageAccess manageAccess = manageAccessService.createRefreshToken(subscriber.getSubscriberId());
+
+
                   return new LoginResponse(
                           subscriber.getSubscriberId(),
                           subscriber.getUsername(),
                           subscriber.getFirstname(),
                           subscriber.getLastname(),
                           subscriber.getAuthType().toString(),
-                          1
+                          token,
+                          manageAccess.getToken(), 1
+
                   );
 
                 }else{

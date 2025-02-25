@@ -4,7 +4,9 @@ import com.innovetsolutionstech.taskearnersng.subscriber_service.model.LoginSubs
 import com.innovetsolutionstech.taskearnersng.subscriber_service.model.NewSubscriber;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.model.NewSubscriberProfile;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.model.dto.LoginResponse;
+import com.innovetsolutionstech.taskearnersng.subscriber_service.service.ManageAccessService;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.service.SubscriberService;
+import com.innovetsolutionstech.taskearnersng.subscriber_service.utilities.JwtUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class SubscriberController {
 
+    private final JwtUtil jwtUtil;
     private final SubscriberService service;
+    private final ManageAccessService manageAccessService;
 
     // register new subcriber
     @PostMapping("/new-subscriber")

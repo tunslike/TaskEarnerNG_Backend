@@ -7,6 +7,9 @@ import jakarta.validation.constraints.NotNull;
 
 public record NewTaskType(
 
+        @NotNull(message = "Task category is required")
+        String taskCategory,
+
         @NotNull(message = "Task name is required")
         String taskName,
 

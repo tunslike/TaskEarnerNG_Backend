@@ -4,6 +4,9 @@ import jakarta.validation.constraints.NotNull;
 
 public record NewTaskModel(
 
+        @NotNull(message = "Subscriber ID is required")
+        String subscriberID,
+
         @NotNull(message = "Task Type ID is required")
         String taskTypeID,
 

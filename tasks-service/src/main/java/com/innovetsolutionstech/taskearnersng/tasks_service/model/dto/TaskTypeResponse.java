@@ -1,16 +1,16 @@
 package com.innovetsolutionstech.taskearnersng.tasks_service.model.dto;
 
-public record TaskResponse(
+public record TaskTypeResponse(
+
         String taskId,
         String taskCategory,
-        String taskType,
-        String taskTypeId,
         String taskName,
+        String taskDescription,
+        String image_src,
+        String priceType,
+        Long taskPrice,
         String platform,
-        Double taskPrice,
-        String captionMessage,
-        String taskIcon,
-        String taskThumbnail,
+        String appName,
         String dateCreated
 ) {
 }

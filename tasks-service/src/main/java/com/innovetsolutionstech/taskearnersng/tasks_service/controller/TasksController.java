@@ -5,6 +5,7 @@ import com.innovetsolutionstech.taskearnersng.tasks_service.model.NewTaskModel;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.NewTaskType;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.NewTaskResponse;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.TaskResponse;
+import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.TaskTypeResponse;
 import com.innovetsolutionstech.taskearnersng.tasks_service.service.TasksService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -31,8 +32,13 @@ public class TasksController {
     }
 
     @GetMapping("fetchTaskTypes")
-    public ResponseEntity<List<TaskResponse>> loadTasksTypes () {
+    public ResponseEntity<List<TaskTypeResponse>> loadAllTasks () {
         return ResponseEntity.ok(service.findAllTaskTypes());
+    }
+
+    @GetMapping("fetchAllTasks")
+    public ResponseEntity<List<TaskResponse>> loadTasksTypes (@RequestParam int status) {
+        return ResponseEntity.ok(service.findAllTaskByCompleteStatus(status));
     }
 
     @PostMapping("/newTask")

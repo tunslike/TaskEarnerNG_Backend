@@ -28,6 +28,9 @@ public class TaskType {
     @Column(name = "TASK_ID")
     private String taskId;
 
+    @Column(name = "TASK_CATEGORY")
+    private String taskCategory;
+
     @Column(name = "TASK_NAME")
     private String taskName;
 

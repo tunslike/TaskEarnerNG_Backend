@@ -9,6 +9,7 @@ import com.innovetsolutionstech.taskearnersng.tasks_service.model.NewTaskModel;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.NewTaskType;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.NewTaskResponse;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.TaskResponse;
+import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.TaskTypeResponse;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.mapper.NewTaskMapper;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.mapper.TaskActivityMapper;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.mapper.TaskTypeMapper;
@@ -62,7 +63,7 @@ public class TasksService implements TasksRepository {
     }
 
     @Override
-    public List<TaskResponse> findAllTaskTypes() {
+    public List<TaskTypeResponse> findAllTaskTypes() {
 
         try {
 
@@ -85,6 +86,21 @@ public class TasksService implements TasksRepository {
             return task.getTaskId();
 
         }catch(Exception e) {
+            throw new TasksException("Error fetching tasks" + e.getMessage());
+        }
+    }
+
+    @Override
+    public List<TaskResponse> findAllTaskByCompleteStatus(int completeStatus) {
+
+        try {
+
+            return newTaskRepository.findAllByCompleteStatus(completeStatus)
+                    .stream()
+                    .map(newTaskMapper::fromTasks)
+                    .toList();
+
+        }catch (Exception e) {
             throw new TasksException("Error fetching tasks" + e.getMessage());
         }
     }

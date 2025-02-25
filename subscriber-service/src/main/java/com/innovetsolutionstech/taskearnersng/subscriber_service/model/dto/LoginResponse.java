@@ -6,6 +6,8 @@ public record LoginResponse(
         String firstname,
         String lastname,
         String authType,
+        String token,
+        String refreshToken,
         Integer status
 
 ) {
