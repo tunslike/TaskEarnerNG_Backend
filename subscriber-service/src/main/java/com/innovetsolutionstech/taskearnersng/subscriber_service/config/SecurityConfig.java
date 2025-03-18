@@ -23,7 +23,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/subscribers/authenticate").permitAll()  // Allow auth endpoints
+                        .requestMatchers("/api/v1/subscribers/**").permitAll()  // Allow auth endpoints
                         .anyRequest().authenticated()  // Protect all other endpoints
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

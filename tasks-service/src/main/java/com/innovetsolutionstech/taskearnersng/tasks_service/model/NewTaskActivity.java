@@ -1,6 +1,7 @@
 package com.innovetsolutionstech.taskearnersng.tasks_service.model;
 
 import jakarta.validation.constraints.NotNull;
+import org.springframework.web.multipart.MultipartFile;
 
 public record NewTaskActivity(
 
@@ -14,6 +15,6 @@ public record NewTaskActivity(
         String socialMediaAccount,
 
         @NotNull(message = "Task Description is required")
-        String proofOfWork
+        MultipartFile proofOfWork
 ) {
 }

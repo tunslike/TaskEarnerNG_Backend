@@ -1,9 +1,12 @@
 package com.innovetsolutionstech.taskearnersng.subscriber_service.controller;
 
+import com.innovetsolutionstech.taskearnersng.subscriber_service.entity.SubscriberProfile;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.model.LoginSubscriber;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.model.NewSubscriber;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.model.NewSubscriberProfile;
+import com.innovetsolutionstech.taskearnersng.subscriber_service.model.SubscriberBankDetails;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.model.dto.LoginResponse;
+import com.innovetsolutionstech.taskearnersng.subscriber_service.model.dto.SubscriberProfileDto;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.service.ManageAccessService;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.service.SubscriberService;
 import com.innovetsolutionstech.taskearnersng.subscriber_service.utilities.JwtUtil;
@@ -27,10 +30,29 @@ public class SubscriberController {
         return ResponseEntity.ok(service.createSubscriber(request));
     }
 
+    // fetch subscriber profile
+    @GetMapping("/fetchProfile")
+    public ResponseEntity<SubscriberProfileDto> fetchSubscriberProfile(@RequestParam String subscriberId) {
+        return ResponseEntity.ok(service.fetchSubriberProfile(subscriberId));
+    }
+
     // create subscriber profile
     @PostMapping("/createProfile")
     public ResponseEntity<String> createSubscriberProfile(@RequestBody @Valid NewSubscriberProfile profile) {
         return ResponseEntity.ok(service.createSubscriberProfile(profile));
+    }
+
+    // update subscriber profile
+    @PostMapping("/updateProfile")
+    public ResponseEntity<SubscriberProfileDto> updateSubscriberProfile(
+            @RequestBody NewSubscriberProfile newProfile) {
+        return ResponseEntity.ok(service.updateSubscriberProfile(newProfile));
+    }
+
+    // update subscriber bank account
+    @PostMapping("/updateAccountDetails")
+    public ResponseEntity<String> updateBankDetails(@RequestBody @Valid SubscriberBankDetails request) {
+        return ResponseEntity.ok(service.updateAccountDetails(request));
     }
 
     // authenticate subscriber

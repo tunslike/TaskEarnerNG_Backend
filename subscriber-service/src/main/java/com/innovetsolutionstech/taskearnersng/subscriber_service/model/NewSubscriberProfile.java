@@ -25,7 +25,11 @@ public record NewSubscriberProfile(
         String emailAddress,
 
         @NotNull
-        String birthday
+        String birthday,
+
+        String religion,
+
+        String location
 
 ) {
 }

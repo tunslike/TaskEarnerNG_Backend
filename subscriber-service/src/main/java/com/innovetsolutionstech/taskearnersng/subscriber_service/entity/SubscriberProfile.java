@@ -46,11 +46,29 @@ public class SubscriberProfile {
     @Column(name = "BIRTHDAY")
     private String birthday;
 
+    @Column(name = "RELIGION")
+    private String religion;
+
+    @Column(name = "LOCATION")
+    private String location;
+
+    @Column(name = "BANK_NAME")
+    private String bank_name;
+
+    @Column(name = "ACCOUNT_NUMBER")
+    private String account_number;
+
+    @Column(name = "ACCOUNT_NAME")
+    private String account_name;
+
     @CreatedDate
     @Column(name = "DATE_CREATED", updatable = false, nullable = false)
     private LocalDateTime dateCreated;
 
     @Column(name = "DATE_UPDATED", updatable = false, nullable = true)
     private LocalDateTime dateUpdated;
+
+    @Column(name = "ACCOUNT_DATE_UPDATE", updatable = false, nullable = true)
+    private LocalDateTime accountDateUpdate;
 
 }

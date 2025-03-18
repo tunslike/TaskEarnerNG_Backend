@@ -43,6 +43,8 @@ public class SubscriberMapper {
                 .mobileNumber(request.mobileNumber())
                 .emailAddress(request.emailAddress())
                 .birthday(request.birthday())
+                .religion(request.religion())
+                .location(request.location())
                 .gender(request.gender())
                 .dateCreated(LocalDateTime.now())
                 .build();

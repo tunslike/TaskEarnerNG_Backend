@@ -13,8 +13,7 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Apply CORS to all endpoints
                 .allowedOrigins("*") // Allow React app origin
-                .allowedMethods("GET", "POST") // Allow these HTTP methods
-                .allowedHeaders("*");
+                .allowedMethods("GET", "POST"); // Allow these HTTP methods
     }
 
 }

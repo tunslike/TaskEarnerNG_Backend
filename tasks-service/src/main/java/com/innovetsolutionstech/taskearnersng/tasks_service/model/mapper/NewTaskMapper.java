@@ -2,6 +2,7 @@ package com.innovetsolutionstech.taskearnersng.tasks_service.model.mapper;
 
 import com.innovetsolutionstech.taskearnersng.tasks_service.entity.NewTask;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.NewTaskModel;
+import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.SubscribedTaskDto;
 import com.innovetsolutionstech.taskearnersng.tasks_service.model.dto.TaskResponse;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class NewTaskMapper {
                 .engagement_type(record.engagement_type())
                 .social_media_link(record.social_media_link())
                 .price(record.price())
-                .no_Of_Post(record.no_of_post())
+                .noOfPost(record.no_of_post())
                 .platform(record.platform())
                 .location(record.location())
                 .gender(record.gender())
@@ -46,6 +47,22 @@ public class NewTaskMapper {
                 task.getTask_icon(),
                 task.getTask_thumbnail(),
                 task.getDateCreated().toString()
+        );
+    }
+
+    //fetch all subcriber tasks
+    public SubscribedTaskDto loadSubscribedTask(NewTask request) {
+        return new SubscribedTaskDto(
+                request.getTaskId(),
+                request.getPlatform(),
+                request.getTaskName(),
+                request.getTask_icon(),
+                request.getTaskType(),
+                request.getPrice(),
+                request.getNoOfPost(),
+                request.getDateCreated().toString(),
+                request.getPaymentStatus(),
+                request.getStatus()
         );
     }
 }

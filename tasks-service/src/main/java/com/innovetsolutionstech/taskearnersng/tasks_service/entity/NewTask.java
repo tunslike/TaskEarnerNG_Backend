@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "TENG_TASKS")
@@ -64,7 +65,7 @@ public class NewTask {
     private double price;
 
     @Column(name = "NO_OF_POST")
-    private Integer no_Of_Post;
+    private Integer noOfPost;
 
     @Column(name = "GENDER")
     private String gender;
@@ -78,6 +79,9 @@ public class NewTask {
 
     @Column(name = "PAYMENT_STATUS")
     private Integer paymentStatus;
+
+    @Column(name = "DATE_COMPLETED")
+    private LocalDateTime dateCompleted;
 
     @Column(name = "COMPLETE_STATUS")
     private Integer completeStatus;
